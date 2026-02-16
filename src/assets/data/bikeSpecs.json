@@ -1,0 +1,295 @@
+{
+  "bike": {
+    "model": "Specialized Diverge Comp Carbon",
+    "year": 2021,
+    "type": "Gravel",
+    "color": "Satin Carbon/Black/Chrome",
+    "size": "56cm"
+  },
+  "components": {
+    "frame": {
+      "id": "frame-main",
+      "name": "Frame",
+      "manufacturer": "Specialized",
+      "model": "FACT 9r Carbon",
+      "material": "Carbon Fiber",
+      "weight": 1100,
+      "installedDate": "2021-06-01",
+      "lifespan": "unlimited",
+      "maintenanceInterval": null,
+      "notes": "Future Shock 2.0 suspension system integrated"
+    },
+    "fork": {
+      "id": "fork-main",
+      "name": "Fork",
+      "manufacturer": "Specialized",
+      "model": "FACT Carbon",
+      "material": "Carbon Fiber",
+      "travel": 0,
+      "weight": 450,
+      "installedDate": "2021-06-01",
+      "lifespan": "unlimited",
+      "maintenanceInterval": null
+    },
+    "wheels": {
+      "front": {
+        "rim": {
+          "id": "rim-front",
+          "name": "Front Rim",
+          "manufacturer": "Roval",
+          "model": "Terra CLX",
+          "material": "Carbon Fiber",
+          "size": "700c",
+          "internalWidth": 21,
+          "weight": 420,
+          "installedDate": "2021-06-01",
+          "lifespan": 50000,
+          "maintenanceInterval": 5000,
+          "mileage": 0
+        },
+        "hub": {
+          "id": "hub-front",
+          "name": "Front Hub",
+          "manufacturer": "DT Swiss",
+          "model": "350",
+          "bearings": "sealed cartridge",
+          "weight": 95,
+          "installedDate": "2021-06-01",
+          "maintenanceInterval": 5000,
+          "mileage": 0
+        },
+        "tire": {
+          "id": "tire-front",
+          "name": "Front Tire",
+          "manufacturer": "Specialized",
+          "model": "Pathfinder Pro",
+          "size": "700x38c",
+          "tpi": 120,
+          "weight": 320,
+          "installedDate": "2021-06-01",
+          "lifespan": 3000,
+          "mileage": 0
+        }
+      },
+      "rear": {
+        "rim": {
+          "id": "rim-rear",
+          "name": "Rear Rim",
+          "manufacturer": "Roval",
+          "model": "Terra CLX",
+          "material": "Carbon Fiber",
+          "size": "700c",
+          "internalWidth": 21,
+          "weight": 480,
+          "installedDate": "2021-06-01",
+          "lifespan": 50000,
+          "maintenanceInterval": 5000,
+          "mileage": 0
+        },
+        "hub": {
+          "id": "hub-rear",
+          "name": "Rear Hub",
+          "manufacturer": "DT Swiss",
+          "model": "350",
+          "bearings": "sealed cartridge",
+          "freehubBody": "Shimano HG",
+          "weight": 230,
+          "installedDate": "2021-06-01",
+          "maintenanceInterval": 5000,
+          "mileage": 0
+        },
+        "tire": {
+          "id": "tire-rear",
+          "name": "Rear Tire",
+          "manufacturer": "Specialized",
+          "model": "Pathfinder Pro",
+          "size": "700x38c",
+          "tpi": 120,
+          "weight": 320,
+          "installedDate": "2021-06-01",
+          "lifespan": 2000,
+          "mileage": 0
+        }
+      }
+    },
+    "drivetrain": {
+      "crankset": {
+        "id": "crankset",
+        "name": "Crankset",
+        "manufacturer": "Shimano",
+        "model": "GRX 810",
+        "chainrings": "48/32T",
+        "crankLength": 172.5,
+        "weight": 725,
+        "installedDate": "2021-06-01",
+        "lifespan": 50000,
+        "maintenanceInterval": 5000,
+        "mileage": 0
+      },
+      "chain": {
+        "id": "chain",
+        "name": "Chain",
+        "manufacturer": "Shimano",
+        "model": "CN-HG701-11",
+        "speed": 11,
+        "weight": 257,
+        "installedDate": "2021-06-01",
+        "lifespan": 3000,
+        "maintenanceInterval": 500,
+        "mileage": 0
+      },
+      "cassette": {
+        "id": "cassette",
+        "name": "Cassette",
+        "manufacturer": "Shimano",
+        "model": "CS-HG800-11",
+        "speed": 11,
+        "range": "11-34T",
+        "weight": 350,
+        "installedDate": "2021-06-01",
+        "lifespan": 10000,
+        "maintenanceInterval": 5000,
+        "mileage": 0
+      },
+      "frontDerailleur": {
+        "id": "derailleur-front",
+        "name": "Front Derailleur",
+        "manufacturer": "Shimano",
+        "model": "GRX RD-RX810",
+        "weight": 140,
+        "installedDate": "2021-06-01",
+        "maintenanceInterval": 5000,
+        "mileage": 0
+      },
+      "rearDerailleur": {
+        "id": "derailleur-rear",
+        "name": "Rear Derailleur",
+        "manufacturer": "Shimano",
+        "model": "GRX RD-RX812",
+        "maxCog": 42,
+        "weight": 302,
+        "installedDate": "2021-06-01",
+        "maintenanceInterval": 5000,
+        "mileage": 0
+      }
+    },
+    "brakes": {
+      "levers": {
+        "id": "brake-levers",
+        "name": "Brake/Shift Levers",
+        "manufacturer": "Shimano",
+        "model": "GRX ST-RX810",
+        "type": "Hydraulic Disc",
+        "speed": 11,
+        "weight": 480,
+        "installedDate": "2021-06-01",
+        "maintenanceInterval": 10000,
+        "mileage": 0
+      },
+      "calipers": {
+        "front": {
+          "id": "caliper-front",
+          "name": "Front Brake Caliper",
+          "manufacturer": "Shimano",
+          "model": "BR-RX810",
+          "pistons": 2,
+          "weight": 135,
+          "installedDate": "2021-06-01",
+          "maintenanceInterval": 5000,
+          "mileage": 0
+        },
+        "rear": {
+          "id": "caliper-rear",
+          "name": "Rear Brake Caliper",
+          "manufacturer": "Shimano",
+          "model": "BR-RX810",
+          "pistons": 2,
+          "weight": 135,
+          "installedDate": "2021-06-01",
+          "maintenanceInterval": 5000,
+          "mileage": 0
+        }
+      },
+      "rotors": {
+        "front": {
+          "id": "rotor-front",
+          "name": "Front Rotor",
+          "manufacturer": "Shimano",
+          "model": "RT-70",
+          "size": 160,
+          "weight": 120,
+          "installedDate": "2021-06-01",
+          "lifespan": 5000,
+          "mileage": 0
+        },
+        "rear": {
+          "id": "rotor-rear",
+          "name": "Rear Rotor",
+          "manufacturer": "Shimano",
+          "model": "RT-70",
+          "size": 160,
+          "weight": 120,
+          "installedDate": "2021-06-01",
+          "lifespan": 5000,
+          "mileage": 0
+        }
+      }
+    },
+    "cockpit": {
+      "handlebar": {
+        "id": "handlebar",
+        "name": "Handlebar",
+        "manufacturer": "Specialized",
+        "model": "Hover Alloy",
+        "width": 420,
+        "drop": 120,
+        "reach": 80,
+        "flare": 12,
+        "weight": 290,
+        "installedDate": "2021-06-01"
+      },
+      "stem": {
+        "id": "stem",
+        "name": "Stem",
+        "manufacturer": "Specialized",
+        "model": "Comp Multi",
+        "length": 100,
+        "angle": 6,
+        "weight": 145,
+        "installedDate": "2021-06-01"
+      },
+      "bartape": {
+        "id": "bartape",
+        "name": "Bar Tape",
+        "manufacturer": "Specialized",
+        "model": "S-Wrap",
+        "weight": 50,
+        "installedDate": "2021-06-01",
+        "lifespan": 5000,
+        "mileage": 0
+      }
+    },
+    "seatpost": {
+      "id": "seatpost",
+      "name": "Seatpost",
+      "manufacturer": "Specialized",
+      "model": "Comp Carbon",
+      "diameter": 27.2,
+      "length": 350,
+      "offset": 20,
+      "weight": 220,
+      "installedDate": "2021-06-01"
+    },
+    "saddle": {
+      "id": "saddle",
+      "name": "Saddle",
+      "manufacturer": "Specialized",
+      "model": "Power Comp",
+      "width": 143,
+      "weight": 240,
+      "installedDate": "2021-06-01",
+      "lifespan": 20000,
+      "mileage": 0
+    }
+  }
+}
