@@ -59,7 +59,7 @@
   display: flex;
   background: rgba(0, 0, 0, 0.3);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding-right: 40px; /* space for collapse button */
+  padding-right: 40px;
 }
 
 .control-tabs button {
@@ -113,7 +113,7 @@
   font-size: 15px;
   font-weight: 600;
   color: #ffffff;
-  margin: 0 0 12px;
+  margin: 0 0 8px;
 }
 
 .tab-content h4 {
@@ -129,6 +129,13 @@
   color: #aaaaaa;
   line-height: 1.6;
   margin-bottom: 12px;
+}
+
+.interaction-hint {
+  font-size: 11px !important;
+  color: #666 !important;
+  font-style: italic;
+  margin-bottom: 12px !important;
 }
 
 .tab-content ul {
@@ -220,15 +227,20 @@
   background: rgba(255, 255, 255, 0.03);
   border-radius: 8px;
   overflow: hidden;
-  transition: background 0.2s;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 1px solid transparent;
 }
 
 .component-item-wrap:hover {
   background: rgba(255, 255, 255, 0.06);
 }
 
-.component-item-wrap.expanded {
-  background: rgba(255, 255, 255, 0.05);
+/* ── Selected state (two-way sync with 3D) ── */
+.component-item-wrap.selected {
+  background: rgba(74, 158, 255, 0.08);
+  border-color: rgba(74, 158, 255, 0.4);
+  box-shadow: 0 0 12px rgba(74, 158, 255, 0.1);
 }
 
 .component-item {
@@ -237,7 +249,6 @@
   align-items: center;
   padding: 10px 12px;
   font-size: 13px;
-  cursor: pointer;
 }
 
 .component-left {
@@ -251,6 +262,10 @@
 .component-left strong {
   color: #ffffff;
   font-size: 13px;
+}
+
+.selected .component-left strong {
+  color: #4a9eff;
 }
 
 /* Wear bar */
@@ -268,17 +283,9 @@
   transition: width 0.5s ease;
 }
 
-.wear-fill.good {
-  background: #22c55e;
-}
-
-.wear-fill.warning {
-  background: #fb923c;
-}
-
-.wear-fill.critical {
-  background: #ef4444;
-}
+.wear-fill.good { background: #22c55e; }
+.wear-fill.warning { background: #fb923c; }
+.wear-fill.critical { background: #ef4444; }
 
 /* Status badges */
 .status {
@@ -309,9 +316,21 @@
 
 /* Expanded component details */
 .component-details {
-  padding: 0 12px 12px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 4px 12px 12px;
+  border-top: 1px solid rgba(74, 158, 255, 0.15);
   margin-top: 2px;
+  animation: slideDown 0.2s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    max-height: 200px;
+  }
 }
 
 .detail-row {

@@ -1,16 +1,16 @@
-import React, { useState } from 'react'
-import { Settings, Wrench, Info, ChevronDown, ChevronUp, Plus, Calendar } from 'lucide-react'
+import React, { useState, useEffect, useRef } from 'react'
+import { Settings, Wrench, Info, ChevronDown, ChevronUp } from 'lucide-react'
 import '../styles/ControlPanel.css'
 
 const INITIAL_COMPONENTS = [
-  { id: 'chain', name: 'Chain', status: 'good', miles: 1200, maxMiles: 3000, lastService: '2024-11-15' },
-  { id: 'front-tire', name: 'Front Tire', status: 'warning', miles: 2800, maxMiles: 3500, lastService: '2024-08-20' },
-  { id: 'rear-tire', name: 'Rear Tire', status: 'warning', miles: 2800, maxMiles: 3500, lastService: '2024-08-20' },
-  { id: 'brake-pads-f', name: 'Front Brake Pads', status: 'good', miles: 800, maxMiles: 2500, lastService: '2024-12-01' },
-  { id: 'brake-pads-r', name: 'Rear Brake Pads', status: 'good', miles: 800, maxMiles: 2500, lastService: '2024-12-01' },
-  { id: 'cassette', name: 'Cassette', status: 'good', miles: 1200, maxMiles: 6000, lastService: '2024-11-15' },
-  { id: 'bar-tape', name: 'Bar Tape', status: 'good', miles: 1200, maxMiles: 4000, lastService: '2024-10-01' },
-  { id: 'cables', name: 'Shift Cables', status: 'good', miles: 1200, maxMiles: 5000, lastService: '2024-11-15' },
+  { id: 'chain', name: 'Chain', miles: 1200, maxMiles: 3000, lastService: '2024-11-15' },
+  { id: 'front-tire', name: 'Front Tire', miles: 2800, maxMiles: 3500, lastService: '2024-08-20' },
+  { id: 'rear-tire', name: 'Rear Tire', miles: 2800, maxMiles: 3500, lastService: '2024-08-20' },
+  { id: 'brake-pads-f', name: 'Front Brake Pads', miles: 800, maxMiles: 2500, lastService: '2024-12-01' },
+  { id: 'brake-pads-r', name: 'Rear Brake Pads', miles: 800, maxMiles: 2500, lastService: '2024-12-01' },
+  { id: 'cassette', name: 'Cassette', miles: 1200, maxMiles: 6000, lastService: '2024-11-15' },
+  { id: 'bar-tape', name: 'Bar Tape', miles: 1200, maxMiles: 4000, lastService: '2024-10-01' },
+  { id: 'cables', name: 'Shift Cables', miles: 1200, maxMiles: 5000, lastService: '2024-11-15' },
 ]
 
 function getStatus(miles, maxMiles) {
@@ -28,15 +28,29 @@ function getStatusLabel(status) {
   }
 }
 
-export default function ControlPanel({ showGrid, setShowGrid, showShadows, setShowShadows }) {
-  const [activeTab, setActiveTab] = useState('view')
+export default function ControlPanel({
+  showGrid, setShowGrid,
+  showShadows, setShowShadows,
+  selectedComponent, onSelectComponent
+}) {
+  const [activeTab, setActiveTab] = useState('maintenance')
   const [collapsed, setCollapsed] = useState(false)
-  const [components, setComponents] = useState(INITIAL_COMPONENTS)
-  const [expandedComponent, setExpandedComponent] = useState(null)
+  const [components] = useState(INITIAL_COMPONENTS)
+  const selectedRef = useRef(null)
 
-  const toggleComponent = (id) => {
-    setExpandedComponent(expandedComponent === id ? null : id)
-  }
+  // Auto-switch to maintenance tab and scroll to component when selected from 3D
+  useEffect(() => {
+    if (selectedComponent) {
+      setActiveTab('maintenance')
+      setCollapsed(false)
+      // Scroll the selected component into view
+      setTimeout(() => {
+        if (selectedRef.current) {
+          selectedRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+        }
+      }, 50)
+    }
+  }, [selectedComponent])
 
   return (
     <div className={`control-panel ${collapsed ? 'collapsed' : ''}`}>
@@ -110,6 +124,9 @@ export default function ControlPanel({ showGrid, setShowGrid, showShadows, setSh
             {activeTab === 'maintenance' && (
               <div className="tab-content">
                 <h3>Maintenance Tracking</h3>
+                <p className="interaction-hint">
+                  Click a component below or on the 3D model to inspect it
+                </p>
 
                 {/* Summary bar */}
                 <div className="maint-summary">
@@ -137,10 +154,16 @@ export default function ControlPanel({ showGrid, setShowGrid, showShadows, setSh
                   {components.map((comp) => {
                     const status = getStatus(comp.miles, comp.maxMiles)
                     const pct = Math.min(100, Math.round((comp.miles / comp.maxMiles) * 100))
-                    const isExpanded = expandedComponent === comp.id
+                    const isSelected = selectedComponent === comp.id
+
                     return (
-                      <div key={comp.id} className={`component-item-wrap ${isExpanded ? 'expanded' : ''}`}>
-                        <div className="component-item" onClick={() => toggleComponent(comp.id)}>
+                      <div
+                        key={comp.id}
+                        ref={isSelected ? selectedRef : null}
+                        className={`component-item-wrap ${isSelected ? 'selected' : ''}`}
+                        onClick={() => onSelectComponent(comp.id)}
+                      >
+                        <div className="component-item">
                           <div className="component-left">
                             <strong>{comp.name}</strong>
                             <div className="wear-bar">
@@ -154,7 +177,9 @@ export default function ControlPanel({ showGrid, setShowGrid, showShadows, setSh
                             {getStatusLabel(status)}
                           </span>
                         </div>
-                        {isExpanded && (
+
+                        {/* Expanded details when selected */}
+                        {isSelected && (
                           <div className="component-details">
                             <div className="detail-row">
                               <span>Mileage</span>
